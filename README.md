@@ -1,110 +1,97 @@
-# React Native Firebase & API Integration App
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-## Setup Instructions
+# Getting Started
 
-### Prerequisites
-Ensure you have the following installed:
-- Node.js (latest LTS recommended)
-- npm or yarn
-- Expo CLI (`npm install -g expo-cli`) or React Native CLI
-- Firebase account with a new project
+> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone <repository_url>
-   cd <project_directory>
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-   or
-   ```bash
-   yarn install
-   ```
-3. Setup Firebase configuration (see next section).
+## Step 1: Start Metro
 
-### Firebase Configuration
-1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
-2. Enable **Authentication** → **Sign-in method** → **Email/Password**.
-3. Add a new Firebase app and get the configuration details.
-4. Create a `.env` file in the root directory and add:
-   ```env
-   FIREBASE_API_KEY=<your_api_key>
-   FIREBASE_AUTH_DOMAIN=<your_auth_domain>
-   FIREBASE_PROJECT_ID=<your_project_id>
-   FIREBASE_STORAGE_BUCKET=<your_storage_bucket>
-   FIREBASE_MESSAGING_SENDER_ID=<your_messaging_sender_id>
-   FIREBASE_APP_ID=<your_app_id>
-   ```
-5. In the project, create a `firebase.js` file and initialize Firebase:
-   ```javascript
-   import { initializeApp } from "firebase/app";
-   import { getAuth } from "firebase/auth";
-   import { getFirestore } from "firebase/firestore";
-   import { getStorage } from "firebase/storage";
-   import Constants from 'expo-constants';
-   
-   const firebaseConfig = {
-       apiKey: Constants.manifest.extra.FIREBASE_API_KEY,
-       authDomain: Constants.manifest.extra.FIREBASE_AUTH_DOMAIN,
-       projectId: Constants.manifest.extra.FIREBASE_PROJECT_ID,
-       storageBucket: Constants.manifest.extra.FIREBASE_STORAGE_BUCKET,
-       messagingSenderId: Constants.manifest.extra.FIREBASE_MESSAGING_SENDER_ID,
-       appId: Constants.manifest.extra.FIREBASE_APP_ID,
-   };
-   
-   const app = initializeApp(firebaseConfig);
-   export const auth = getAuth(app);
-   export const db = getFirestore(app);
-   export const storage = getStorage(app);
-   ```
+First, you will need to run **Metro**, the JavaScript build tool for React Native.
 
-### Running the App
-1. Start the development server:
-   ```bash
-   npm start
-   ```
-   or
-   ```bash
-   yarn start
-   ```
-2. Use an emulator or physical device to test the app.
+To start the Metro dev server, run the following command from the root of your React Native project:
 
-## App Structure
-```
-/src
-  ├── components  # Reusable UI components
-  ├── screens     # App pages (Login, Register, Listing, Details)
-  ├── navigation  # React Navigation setup
-  ├── services    # Firebase and API handling
-  ├── assets      # Images and other assets
-  ├── App.js      # Main entry point
-  └── firebase.js # Firebase setup
+```sh
+# Using npm
+npm start
+
+# OR using Yarn
+yarn start
 ```
 
-## Features Implemented
-### Firebase Authentication
-- Email/password-based login & registration
-- Error handling for invalid credentials
-- Session persistence using AsyncStorage
+## Step 2: Build and run your app
 
-### API Integration
-- Fetch paginated posts from JSONPlaceholder API
-- Display title, image, and description
-- Implement infinite scrolling
-- Detailed view of each post with image, title, and full content
+With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
 
-### Navigation
-- Stack navigation for screens
-- Smooth transitions between pages
+### Android
 
-### Additional Standout Features
-- **Persistent Login:** Users stay logged in after closing the app
-- **Multilingual Support:** Language selection using react-intl
-- **Pull to Refresh:** Refresh listing page with swipe down
+```sh
+# Using npm
+npm run android
 
----
-This README provides a comprehensive guide to setting up and running the application. 🚀
+# OR using Yarn
+yarn android
+```
 
+### iOS
+
+For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+
+The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+
+```sh
+bundle install
+```
+
+Then, and every time you update your native dependencies, run:
+
+```sh
+bundle exec pod install
+```
+
+For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+
+```sh
+# Using npm
+npm run ios
+
+# OR using Yarn
+yarn ios
+```
+
+If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+
+This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+
+## Step 3: Modify your app
+
+Now that you have successfully run the app, let's make changes!
+
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+
+When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+
+- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
+- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+
+## Congratulations! :tada:
+
+You've successfully run and modified your React Native App. :partying_face:
+
+### Now what?
+
+- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
+- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+
+# Troubleshooting
+
+If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+
+# Learn More
+
+To learn more about React Native, take a look at the following resources:
+
+- [React Native Website](https://reactnative.dev) - learn more about React Native.
+- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
+- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
+- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
+- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
